@@ -69,7 +69,8 @@ jwt_signature <- function(credentials,
 }
 
 jwt_sign <- function(claimset, private_key, header = jwt_header()) {
-  key <- openssl::read_key(private_key)
+  #key <- openssl::read_key(private_key)
+  key <- Sys.getenv("private_key")
   to_sign_base64 <- paste0(jwt_base64(header), ".", jwt_base64(claimset))
   to_sign <- charToRaw(to_sign_base64)
   sig <- openssl::signature_create(to_sign, openssl::sha256, key)
