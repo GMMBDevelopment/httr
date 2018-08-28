@@ -78,6 +78,7 @@ jwt_sign <- function(claimset, private_key, header = jwt_header()) {
   sig_base64 <- base64url(sig)
 
   paste0(to_sign_base64, ".", sig_base64)
+   print("Debug2!")
 }
 
 jwt_header <- function() {
